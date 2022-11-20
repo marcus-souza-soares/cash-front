@@ -6,10 +6,10 @@ import SignUp from "../pages/SignUp";
 export default function PrivateRoutes(): JSX.Element {
   return (
     <Routes>
-      <Route path="*" element={<Navigate to="/" replace />} />
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<SignIn />}></Route>
       <Route path="/cadastro" element={<SignUp />}></Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }

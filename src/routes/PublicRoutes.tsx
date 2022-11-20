@@ -5,9 +5,9 @@ import SignUp from "../pages/SignUp";
 export default function PublicRoutes(): JSX.Element {
   return (
     <Routes>
-      <Route path="*" element={<Navigate to="/login" replace />} />
       <Route path="/login" element={<SignIn />}></Route>
       <Route path="/cadastro" element={<SignUp />}></Route>
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 }
