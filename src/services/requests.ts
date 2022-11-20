@@ -11,7 +11,7 @@ export const singUpRequest = async (data: signUpData): Promise<any> => {
   return await api.post("user/new", data);
 };
 
-export const singInRequest = async (data: signInData): Promise<any> => {
+export const singInRequest = async (data: signInData): Promise<SignInResponse> => {
   return await api.post("user/login", data);
 };
 

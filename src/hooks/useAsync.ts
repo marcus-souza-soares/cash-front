@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-export const useAsync = (
+export const useAsync = <T>(
   handler: any,
   immediate: boolean = true
 ): {
-  data: null | any;
+  data: null | T;
   loading: boolean;
   error: string | null;
   act: (...args: any) => Promise<Error | T | null>;
@@ -18,10 +18,10 @@ export const useAsync = (
     setError(null);
 
     try {
-      const data = await handler(...args);
-      setData(data);
+      const promise = await handler(...args);
+      setData(promise.data);
       setLoading(false);
-      return data;
+      return promise.data;
     } catch (error: any) {
       setError(error);
       setLoading(false);

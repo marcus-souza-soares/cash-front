@@ -11,7 +11,7 @@ interface Props {
 export interface AuthContextData {
   user: User | null;
   signed: boolean;
-  signIn: (dataInfo: SignInResponse) => void;
+  signIn: (dataInfo: any) => void;
   signOut: () => void;
 }
 
