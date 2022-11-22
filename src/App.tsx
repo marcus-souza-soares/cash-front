@@ -1,5 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import { AuthProvider } from "./contexts/authContext";
+import { AccountProvider } from "./contexts/accountContext";
+import { TransactionProvider } from "./contexts/transactionContext";
 import HandleRoutes from "./routes/HandleRoutes";
 import { BrowserRouter } from "react-router-dom";
 
@@ -9,7 +11,11 @@ function App(): JSX.Element {
       <ToastContainer />
       <BrowserRouter>
         <AuthProvider>
-          <HandleRoutes />
+          <AccountProvider>
+            <TransactionProvider>
+              <HandleRoutes />
+            </TransactionProvider>
+          </AccountProvider>
         </AuthProvider>
       </BrowserRouter>
     </div>

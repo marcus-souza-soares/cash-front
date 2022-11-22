@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Input from "../components/Form/Input";
 import Button from "../components/Form/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { signInData } from "../models/userModel";
 import { useAuth } from "../hooks/useAuth";
@@ -14,6 +14,7 @@ import { validateInputUsername, validateInputPassword } from "../utils/input";
 //Marcus-ssouza
 //marcusS123
 export default function SignIn(): JSX.Element {
+  const navigate = useNavigate();
   const [userDataLogin, setUserDataLogin] = useState<signInData>({
     username: "",
     password: "",
@@ -40,6 +41,7 @@ export default function SignIn(): JSX.Element {
         if (res && !(res instanceof Error)) {
           toast("Logado com sucesso!");
           signIn(res);
+          navigate("/home");
         }
       })
       .catch(() => toast("Não foi possível fazer login."));

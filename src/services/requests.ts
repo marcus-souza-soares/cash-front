@@ -1,6 +1,7 @@
 import api from "./api";
 import { signUpData, signInData, User } from "../models/userModel";
 import { ITransactionsParams } from "../models/transactionsModels";
+import {AccountData} from "../models/accountModel"
 
 export interface SignInResponse {
   user: User;
@@ -19,3 +20,10 @@ export const getTransactions = async (): Promise<ITransactionsParams[]> => {
   return await api.get("transactions");
 }
 
+export const getAccount = async (accountId: number): Promise<AccountData> => {
+  return await api.get("account/" + accountId)
+}
+
+export const searchUsers = async (username: string): Promise<User[]> => {
+  return await api.get("find/" + username)
+}

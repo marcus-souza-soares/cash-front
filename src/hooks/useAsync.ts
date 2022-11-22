@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import { User, AccountData, ITransactionsParams } from '../models'
 
-export const useAsync = <T>(
+export const useAsync = <T extends (User & AccountData & ITransactionsParams[]  ) | null>(
   handler: any,
   immediate: boolean = true
 ): {
-  data: null | T;
+  data: User & AccountData & ITransactionsParams[] | null;
   loading: boolean;
   error: string | null;
-  act: (...args: any) => Promise<Error | T | null>;
+  act: (...args: any) => Promise<Error | T >;
 } => {
   const [data, setData] = useState<T | null>(null)
   const [loading, setLoading] = useState<boolean>(immediate);

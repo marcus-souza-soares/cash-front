@@ -4,10 +4,11 @@ import PrivateRoutes from "./PrivateRoutes";
 
 const HandleRoutes = (): JSX.Element => {
   const { signed } = useAuth();
-  if (signed) {
-    return <PrivateRoutes />;
-  } else {
+  console.log(signed);
+  if (!signed) {
     return <PublicRoutes />;
+  } else {
+    return <PrivateRoutes />;
   }
 };
 
