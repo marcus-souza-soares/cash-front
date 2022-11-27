@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { User } from "../models";
 import { AccountData } from "../models/accountModel";
 
 interface Props {
@@ -6,9 +7,9 @@ interface Props {
 }
 
 interface TransactionContextData {
-  accountIn: AccountData | null;
+  accountIn: User | null;
   setAccountIn: any;
-  accountOut: AccountData | null;
+  accountOut: User | null;
   setAccountOut: any;
   value: number;
   setValue: any;
@@ -20,14 +21,8 @@ export const TransactionContext = createContext<TransactionContextData>(
 
 export const TransactionProvider = ({ children }: Props): JSX.Element => {
   const [value, setValue] = useState<number>(0);
-  const [accountIn, setAccountIn] = useState<AccountData>({
-    id: 0,
-    balance: 0,
-  });
-  const [accountOut, setAccountOut] = useState<AccountData>({
-    id: 0,
-    balance: 0,
-  });
+  const [accountIn, setAccountIn] = useState<User | null>(null);
+  const [accountOut, setAccountOut] = useState<User | null>(null);
 
   return (
     <TransactionContext.Provider

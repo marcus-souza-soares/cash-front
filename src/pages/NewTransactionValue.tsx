@@ -7,11 +7,13 @@ import { OptionButton } from "../components/OptionButton";
 import { AccountContext } from "../contexts/accountContext";
 import { TransactionContext } from "../contexts/transactionContext";
 import { alert } from "../Helpers/Alert";
+import { useAuth } from "../hooks/useAuth";
 
 export default function NewTransactionValue(): JSX.Element {
   const navigate = useNavigate();
   const [_value, _setValue] = useState<string | null>(null);
   const { account } = useContext(AccountContext);
+  const { user } = useAuth();
   const {
     setAccountOut,
     setValue,
@@ -25,9 +27,15 @@ export default function NewTransactionValue(): JSX.Element {
           title: "Saldo insuficiente",
           text: `Seu saldo é ${account.balance}`,
         });
-      } else {
+      } else if(Number(_value) <= 1){
+        alert({
+          type: "error",
+          title: "O valor deve ser maior que 0",
+          text: ``,
+        });
+      }else {
         setValue(_value);
-        setAccountOut(account);
+        setAccountOut(user);
         navigate("/new/transfer")
       }
     }
@@ -35,7 +43,7 @@ export default function NewTransactionValue(): JSX.Element {
   return (
     <Container>
       <Input
-        label="Digite o valor:"
+        label="Digite o valor: "
         onChange={(e) => _setValue(e.target.value)}
       />
       <OptionButton onClick={handleSubmit}>Prosseguir</OptionButton>

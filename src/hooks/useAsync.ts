@@ -5,7 +5,7 @@ export const useAsync = <T extends (User & AccountData & ITransactionsParams[]  
   handler: any,
   immediate: boolean = true
 ): {
-  data: User & AccountData & ITransactionsParams[] | null;
+  data: User & AccountData & ITransactionsParams[] & User[] | null;
   loading: boolean;
   error: string | null;
   act: (...args: any) => Promise<Error | T >;

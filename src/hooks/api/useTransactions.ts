@@ -7,7 +7,7 @@ export default function useTransactions(){
     loading: transactionsLoading,
     error: transactionsError,
     act: getTransactions,
-  } = useAsync(transactionsApi.getTransactions, false);
+  } = useAsync(transactionsApi.getTransactions, true);
 
   return {
     transactions,

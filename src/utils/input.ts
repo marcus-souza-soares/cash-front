@@ -2,15 +2,18 @@ import { InputError } from "../models/inputErrorModels";
 
 export const validateInputUsername = (
   text: string,
+  errorUsername: object,
   setErrorUsername: React.Dispatch<React.SetStateAction<InputError>>
 ): void => {
   if (text.length < 3) {
     setErrorUsername({
+      ...errorUsername,
       error: true,
       helperText: "Username precisa ser acima de 3 caracteres!",
     });
   } else {
     setErrorUsername({
+      ...errorUsername,
       error: false,
       helperText: "",
     });

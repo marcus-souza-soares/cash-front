@@ -62,7 +62,7 @@ export default function SignIn(): JSX.Element {
           value={userDataLogin.username}
           onChange={(e) => {
             setUserDataLogin({ ...userDataLogin, username: e.target.value });
-            validateInputUsername(userDataLogin.username, setErrorUsername);
+            validateInputUsername(userDataLogin.username, errorUsername, setErrorUsername);
           }}
         />
         <Input

@@ -5,3 +5,11 @@ export interface ITransactionsParams {
   balance: number;
   createdAt: any;
 }
+
+export interface TransactionUserParams {
+  userInId: number;
+  userOutId: number;
+  accountInId: number;
+  accountOutId: number;
+  value: number;
+}

@@ -21,7 +21,7 @@ export function OptionButton({
 
 const OptButton = styled.button`
   background-color: #fff;
-  width: 121px;
+  width: auto;
   height: 52px;
   border-radius: 10px;
   font-size: 22px;
