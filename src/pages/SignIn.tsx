@@ -62,7 +62,7 @@ export default function SignIn(): JSX.Element {
           value={userDataLogin.username}
           onChange={(e) => {
             setUserDataLogin({ ...userDataLogin, username: e.target.value });
-            validateInputUsername(userDataLogin.username, errorUsername, setErrorUsername);
+            validateInputUsername(e.target.value, errorUsername, setErrorUsername);
           }}
         />
         <Input
@@ -74,7 +74,7 @@ export default function SignIn(): JSX.Element {
           value={userDataLogin.password}
           onChange={(e) => {
             setUserDataLogin({ ...userDataLogin, password: e.target.value });
-            validateInputPassword(userDataLogin.password, setErrorPassword);
+            validateInputPassword(e.target.value, setErrorPassword);
           }}
         />
         <Button variant="outlined" loading={loginLoading} type="submit">
